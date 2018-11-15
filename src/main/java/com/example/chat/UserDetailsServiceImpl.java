@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.chat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -15,7 +15,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        com.example.app.User user = userRepository.findByName(username).orElseThrow(() -> new UsernameNotFoundException("No user found with username: " +  username));
+        com.example.chat.User user = userRepository.findByName(username).orElseThrow(() -> new UsernameNotFoundException("No user found with username: " +  username));
 
         return new User(user.getName(), user.getPassword(), emptyList());
     }

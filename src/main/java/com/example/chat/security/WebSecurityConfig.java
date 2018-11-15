@@ -1,4 +1,4 @@
-package com.example.app.security;
+package com.example.chat.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import static com.example.app.security.SecurityConstants.SIGN_UP_URL;
+import static com.example.chat.security.SecurityConstants.SIGN_UP_URL;
 
 @Configuration
 @EnableWebSecurity

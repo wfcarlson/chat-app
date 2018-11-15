@@ -1,4 +1,4 @@
-package com.example.app;
+package com.example.chat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,8 +28,7 @@ public class ApplicationTests {
 
 	@Test
     public void testLogin() throws Exception {
-        this.mvc.perform(post("/user/create").contentType(MediaType.APPLICATION_JSON).content(new String("{\"name\":\"admin\", \"password\":\"password\"}"))).andExpect(status().isOk());
-        this.mvc.perform(post("/login").contentType(MediaType.APPLICATION_JSON).content(new String("{\"name\":\"admin\", \"password\":\"password\"}"))).andExpect(status().isOk());
+	    this.mvc.perform(post("/login").contentType(MediaType.APPLICATION_JSON).content(new String("{\"name\":\"admin\", \"password\":\"password\"}"))).andExpect(status().isOk());
     }
 
 }
