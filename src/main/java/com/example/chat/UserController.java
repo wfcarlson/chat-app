@@ -9,12 +9,18 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.Timestamp;
 
+import static com.example.chat.security.SecurityConstants.HEADER_STRING;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    AuthenticatedUserService authenticatedUserService;
+
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -37,13 +43,14 @@ public class UserController {
     }
 
     @GetMapping
-    public User getUser(@RequestBody User user) throws Exception {
-        throw new NotImplementedException();
+    public User getUser(@RequestHeader(value=HEADER_STRING) String token) throws Exception {
+        return authenticatedUserService.getAuthenticatedUser(token);
     }
 
     @GetMapping("/sent")
-    public ResponseEntity getSent() throws Exception {
-        throw new NotImplementedException();
+    public ResponseEntity getSent(@RequestHeader(value=HEADER_STRING) String token) throws UserNotFoundException {
+        User user = authenticatedUserService.getAuthenticatedUser(token);
+        return ResponseEntity.ok(user.getChats());
     }
 
 }
