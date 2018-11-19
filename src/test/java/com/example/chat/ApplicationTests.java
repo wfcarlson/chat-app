@@ -28,7 +28,7 @@ public class ApplicationTests {
 
 	@Test
     public void testLogin() throws Exception {
-	    this.mvc.perform(post("/login").contentType(MediaType.APPLICATION_JSON).content(new String("{\"name\":\"admin\", \"password\":\"password\"}"))).andExpect(status().isOk());
+        this.mvc.perform(post("/login").contentType(MediaType.APPLICATION_JSON).content(new String("{\"name\":\"admin\", \"password\":\"password\"}"))).andExpect(status().isOk());
     }
 
 }

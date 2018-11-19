@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.Timestamp;
 
@@ -36,10 +37,13 @@ public class UserController {
     }
 
     @GetMapping
-    public User getUser(@RequestBody User user) throws IncorrectLoginException {
-        return userRepository.findByName(user.getName()).orElseThrow(
-                () -> new IncorrectLoginException("invalid name")
-        );
+    public User getUser(@RequestBody User user) throws Exception {
+        throw new NotImplementedException();
+    }
+
+    @GetMapping("/sent")
+    public ResponseEntity getSent() throws Exception {
+        throw new NotImplementedException();
     }
 
 }

@@ -1,23 +1,32 @@
 package com.example.chat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.sql.Timestamp;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
+import javax.persistence.*;
+import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity(name="user")
 @Table(name="users")
-public class User{
+public class User implements Serializable {
 
     @Id
     @GeneratedValue
     private Long id;
     private String name;
     private Timestamp timeCreated;
+
     private String password;
 
-    private User() {
+    @JsonBackReference
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Chat> chats;
+
+    public User() {
 
     }
 
@@ -51,12 +60,17 @@ public class User{
         this.timeCreated = timeCreated;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public List<Chat> getChats() {
+        return chats;
+    }
 }
