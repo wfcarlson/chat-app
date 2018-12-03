@@ -49,6 +49,10 @@ public class Chat implements Serializable {
         return timestamp;
     }
 
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public User getUser() {
         return users;
     }
